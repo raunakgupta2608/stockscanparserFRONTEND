@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import StocksContainer from "./components/StocksContainer";
+import StockDetails from "./components/StockDetails";
+import StockVariableDetails from "./components/StockVariableDetails";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box component="div">
+      <Header />
+      <Routes>
+        <Route path="/" element={<StocksContainer />} />
+        <Route path="/selectedStock" exact element={<StockDetails />} />
+        <Route
+          path="/selectedStock/details"
+          exact
+          element={<StockVariableDetails />}
+        />
+      </Routes>
+    </Box>
   );
 }
 
